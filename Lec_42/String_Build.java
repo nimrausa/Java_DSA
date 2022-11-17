@@ -3,8 +3,8 @@ package Lec_42;
 public class String_Build {
 	public static void main(String[] args)  {
 		StringBuilder sb=new StringBuilder();
-		System.out.println(sb.capacity()); //intially capacity=0
-		System.out.println(sb.length());  //like array list size intially 0
+		System.out.println(sb.capacity()); //initially capacity=0
+		System.out.println(sb.length());  //like array list size initially 0
 		sb.append('c'); //to add
 		sb.append("Hello");
 		System.out.println(sb);
