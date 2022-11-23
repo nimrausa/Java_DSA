@@ -8,6 +8,7 @@ public class BinaryTree {
 		int data;
 		Node right;
 		Node left;
+		public boolean item;
 	}
 	private Node root;
 	Scanner sc=new Scanner(System.in);
@@ -42,7 +43,7 @@ public class BinaryTree {
 		String s="";
 		s="<--" + nn.data + "-->";
 		if(nn.left!=null) {
-			s=nn.left.data + s;
+			s=nn.left.data + s;  //nn.left==address and nn.left.data= data like 20
 		}
 		else {
 			s="." + s;
@@ -60,6 +61,92 @@ public class BinaryTree {
 		Display(nn.right);
 		}
 		
-	}
+		public void postorder() {
+			postorder(root);
+			System.out.println();
+			
+		}
+		private void postorder (Node nn) {
+			if(nn==null) {
+				return;
+			}
+			postorder(nn.left);
+			postorder(nn.right);
+			System.out.print(nn.data + " ");
+		}
+		public void INorder() {
+			INorder(root);
+			System.out.println();
+			
+		}
+		private void INorder (Node nn) {
+			if(nn==null) {
+				return;
+			}
+			INorder(nn.left);
+			System.out.print(nn.data + " ");
+			INorder(nn.right);
+			
+		}
+		public void preorder() {
+			preorder(root);
+			System.out.println();
+			
+		}
+		private void preorder(Node nn) {
+			if(nn==null) {
+				return;
+			}
+			System.out.print(nn.data + " ");
+			preorder(nn.left);
+			
+			preorder(nn.right);
+		}
+		
+		public boolean find(int item) {
+			return find(root,item);
+			
+		}
+		public boolean find(Node nn, int item) {
+			if(nn==null) {
+				return false;
+			}
+			
+			if(nn.data==item) {
+				return true;
+			}
+			boolean lf=find(nn.left,item);
+			boolean rf=find(nn.right,item);
+			return lf|| rf;
+			
+		}
+		public int max() {
+			return max(this.root);
+		}
+		private int max(Node node) {
+			if(node==null) {
+				return Integer.MIN_VALUE;  //f the value is null than it will gives the value minimum  
+			}
+			
+			int left=max(node.left);
+			int right=max(node.right);
+			return Math.max(node.data,Math.max(left, right));
+		}
+		public int ht() {
+			return ht(this.root);
+		}
+		private int ht(Node node) {
+			if(node==null) {
+				return -1;
+			}
+			int left=ht(node.left);
+			int right=ht(node.right);
+			return Math.max(left,  right)+1;
+			
+			
+		}
+}
+		
+	
 
 
